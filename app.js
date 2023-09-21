@@ -80,6 +80,8 @@ app.use("/swagger-json", (req, res, next) =>
 );
 app.use("/swagger-api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.use("/", (req, res, next) => res.status(200).send("Welcome to my Irada Center API!"));
+
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
