@@ -86,8 +86,6 @@ app.use("/swagger-json", (req, res, next) =>
 );
 app.use("/swagger-api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use("/", (req, res, next) => res.status(200).json({ message: "OK" }));
-
 app.use("/api/v1/students", studentsRoutes);
 app.use("/api/v1/teachers", teachersRoutes);
 app.use("/api/v1/groups", groupsRoutes);

@@ -5,7 +5,7 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    steduntId: {
+    studentId: {
         type: String,
         default: Math.floor(Math.random() * 1000000000),
         unique: true
@@ -22,7 +22,7 @@ const studentSchema = new mongoose.Schema({
     grad: {
         type: String,
         required: true,
-        ennum: ['اولي اعدادي', 'تالته اعدادي اعدادي', 'اولي ثانويه', 'تانيه ثانويه', 'تالته ثانويه']
+        ennum: ['اولي اعدادي', 'تانيه اعدادي', 'تالته اعدادي', 'اولي ثانويه', 'تانيه ثانويه', 'تالته ثانويه']
     },
     groups: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -35,7 +35,5 @@ const studentSchema = new mongoose.Schema({
 });
 
 const Student = mongoose.model('Student', studentSchema);
-
-
 
 module.exports = Student;

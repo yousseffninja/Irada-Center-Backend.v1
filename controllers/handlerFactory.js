@@ -138,7 +138,6 @@ exports.getAllMagdy = async (req, res, next, Model) => {
   res.status(200).json({
     status: "success",
     filteredResults: count?.length || 0,
-    results: Model?.length || 0,
     data: {
       doc,
     },
