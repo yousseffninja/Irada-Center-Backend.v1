@@ -1,0 +1,1 @@
+{"title":"Teacher","required":["name","phoneNumber","subject"],"properties":{"name":{"type":"string"},"age":{"type":"number"},"phoneNumber":{"type":"string"},"subject":{"type":"string"},"balance":{"type":"number"},"groups":{"type":"array","items":{"type":"string"}},"transactions":{"type":"array","items":{"type":"string"}},"_id":{"type":"string"}}}
