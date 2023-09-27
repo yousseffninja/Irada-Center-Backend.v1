@@ -1,0 +1,1 @@
+{"title":"Group","required":["grad","subject","price"],"properties":{"groupId":{"type":"string"},"teacher":{"type":"string"},"grad":{"type":"string"},"subject":{"type":"string"},"price":{"type":"number"},"students":{"type":"array","items":{"type":"string"}},"_id":{"type":"string"}}}

@@ -11,6 +11,12 @@ const swaggerUi = require("swagger-ui-express");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 
+const studentsRoutes = require("./routes/studentRoutes");
+const teachersRoutes = require("./routes/teacherRoutes");
+const groupsRoutes = require("./routes/groupRoutes");
+const attendenceRoutes = require("./routes/attendenceRoutes");
+const transactionRoutes = require("./routes/transactionsRoutes");
+
 const swaggerDocument = require("./path/swagger-output.json");
 
 const app = express();
@@ -81,6 +87,12 @@ app.use("/swagger-json", (req, res, next) =>
 app.use("/swagger-api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/", (req, res, next) => res.status(200).json({ message: "OK" }));
+
+app.use("/api/v1/students", studentsRoutes);
+app.use("/api/v1/teachers", teachersRoutes);
+app.use("/api/v1/groups", groupsRoutes);
+app.use("/api/v1/attendence", attendenceRoutes);
+app.use("/api/v1/transactions", transactionRoutes);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
