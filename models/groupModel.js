@@ -8,7 +8,8 @@ const groupSchema = new mongoose.Schema({
     },
     teacher: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Teacher'
+        ref: 'Teacher',
+        required: true,
     },
     grad: {
         type: String,
@@ -26,7 +27,7 @@ const groupSchema = new mongoose.Schema({
     },
     students: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
+        ref: 'student-group'
     }],
 });
 

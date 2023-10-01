@@ -358,6 +358,206 @@
           }
         }
       }
+    },
+    "/api/v1/groups/": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Get All Groups With Filteration",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size: ex: ?limit=10",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "example: ?fields=name,description",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "indexing page: ex: ?page=2",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "example: ?sort=name,-createdAt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Create Groups grad Enum:- اولي اعدادي, تانيه اعدادي, تالته اعدادي, اولي ثانويه, تانيه ثانويه, تالته ثانويه subject Enum:- رياضيات, عربي, انجليزي, كيمياء, فزياء, تاريخ, جغرفياء, فلسفه, علوم, درسات اجتماعيه, فرنساوي, الماني, ايطالي",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "teacher": {
+                    "example": "any"
+                  },
+                  "grad": {
+                    "example": "any"
+                  },
+                  "subject": {
+                    "example": "any"
+                  },
+                  "price": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Add Student To Group",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "example": "any"
+                  },
+                  "studentId": {
+                    "example": "any"
+                  },
+                  "paid": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Get Group By Id",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Delete Group By Id",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "This API For Update Group By Id",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "teacher": {
+                    "example": "any"
+                  },
+                  "grad": {
+                    "example": "any"
+                  },
+                  "subject": {
+                    "example": "any"
+                  },
+                  "price": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -392,6 +592,7 @@
       "groupModel": {
         "title": "Group",
         "required": [
+          "teacher",
           "grad",
           "subject",
           "price"
@@ -417,6 +618,26 @@
             "items": {
               "type": "string"
             }
+          },
+          "_id": {
+            "type": "string"
+          }
+        }
+      },
+      "studentGroup": {
+        "title": "student-group",
+        "required": [
+          "paid"
+        ],
+        "properties": {
+          "groupId": {
+            "type": "string"
+          },
+          "student": {
+            "type": "string"
+          },
+          "paid": {
+            "type": "number"
           },
           "_id": {
             "type": "string"
