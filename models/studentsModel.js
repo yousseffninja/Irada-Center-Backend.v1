@@ -7,8 +7,9 @@ const studentSchema = new mongoose.Schema({
     },
     studentId: {
         type: String,
-        default: Math.floor(Math.random() * 1000000000),
-        unique: true
+        default: function () {
+            return String(Math.floor(Math.random() * 1000000000));
+        },
     },
     age: Number,
     phoneNumber: {

@@ -7,7 +7,8 @@ const router = express.Router();
 router
     .route('/')
     .get(teacherController.getAllTeachers)
-    .post(teacherController.createTeacher);
+    .post(teacherController.createTeacher)
+    .patch(teacherController.withdrawBalance);
 
 router
     .route('/:id')

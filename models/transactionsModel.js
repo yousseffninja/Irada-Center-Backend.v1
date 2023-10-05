@@ -15,7 +15,6 @@ const transactionSchema = new mongoose.Schema({
     },
     percentage: {
         type: Number,
-        required: true
     },
     group: {
         type: mongoose.Schema.Types.ObjectId,
@@ -28,7 +27,7 @@ const transactionSchema = new mongoose.Schema({
     transactionType: {
         type: String,
         required: true,
-        ennum: ['deposite', 'withdraw']
+        enum: ['deposite', 'withdraw']
     },
     transactionNote: String
 });

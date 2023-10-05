@@ -2,6 +2,7 @@ const Group = require("../models/groupModel");
 const StudentGroup = require("../models/studentGroup");
 const Student = require("../models/studentsModel");
 const Teacher =  require("../models/teacherModel");
+const Transactions = require("../models/transactionsModel");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
@@ -155,6 +156,14 @@ exports.addStudenttoGroup = catchAsync(async (req, res, next) => {
     const teacher = await Teacher.findById(group.teacher);
     teacher.balance += paid;
     await teacher.save();
+
+    await Transactions.create({
+        student: student._id,
+        studentDeposite: paid,
+        group: group._id,
+        transactionType: "deposite",
+        transactionNote: "student deposite for Group " + group._id
+    });
 
     res.status(201).json({
         status: "success",

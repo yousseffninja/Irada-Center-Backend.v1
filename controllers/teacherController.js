@@ -1,4 +1,5 @@
 const Teacher = require("../models/teacherModel");
+const Transactions = require("../models/transactionsModel");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
@@ -120,5 +121,37 @@ exports.deleteTeacher = catchAsync(async (req, res, next) => {
     res.status(204).json({
         status: "success",
         teacher: null
+    });
+});
+
+exports.withdrawBalance = catchAsync(async (req, res, next) => {
+    // #swagger.tags = ['Teachers']
+    /* #swagger.description = 'This API For Withdraw Balance' */
+
+    const {
+        teacherId,
+        amount,
+        note
+    } = req.body;
+
+    const teacher = await Teacher.findById(teacherId);
+
+    if (!teacher) {
+        return next(new AppError("No Teacher Found With This ID", 404));
+    }
+
+    const transaction = await Transactions.create({
+        teacher: teacherId,
+        transactionType: "withdraw",
+        transactionNote: note,
+        studentDeposite: amount
+    });
+
+    teacher.balance -= amount;
+    await teacher.save();
+
+    res.status(201).json({
+        status: "success",
+        transaction
     });
 });

@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const groupSchema = new mongoose.Schema({
     groupId: {
         type: String,
-        default: Math.floor(Math.random() * 1000000000),
+        default: function () {
+            return String(Math.floor(Math.random() * 1000000000));
+        },
         unique: true
     },
     teacher: {
