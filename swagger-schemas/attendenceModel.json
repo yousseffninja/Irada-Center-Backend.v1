@@ -1,1 +1,1 @@
-{"title":"Attendence","required":["studentDeposite"],"properties":{"student":{"type":"string"},"studentDeposite":{"type":"number"},"group":{"type":"string"},"attendenceDate":{"type":"array","items":{"type":"string","format":"date-time"}},"_id":{"type":"string"}}}
+{"title":"Attendence","properties":{"student":{"type":"string"},"group":{"type":"string"},"attendenceDate":{"type":"array","items":{"type":"string","format":"date-time"}},"_id":{"type":"string"}}}

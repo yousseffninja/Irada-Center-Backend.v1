@@ -33,6 +33,18 @@ const groupSchema = new mongoose.Schema({
     }],
 });
 
+groupSchema.pre(/^find/, function (next) {
+    this.populate({
+        path: 'teacher',
+        select: '-__v'
+    })
+    .populate({
+        path: 'students',
+        select: '-__v'
+    });
+    next();
+});
+
 const Group = mongoose.model('Group', groupSchema);
 
 module.exports = Group;

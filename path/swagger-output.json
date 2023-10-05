@@ -589,21 +589,193 @@
           }
         }
       }
+    },
+    "/api/v1/attendence/": {
+      "get": {
+        "tags": [
+          "Attendence"
+        ],
+        "description": "This API For Get All Attendence With Filteration",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size: ex: ?limit=10",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "example: ?fields=name,description",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "indexing page: ex: ?page=2",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "example: ?sort=name,-createdAt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Attendence"
+        ],
+        "description": "This API For Make Student Attend Group",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentId": {
+                    "example": "any"
+                  },
+                  "groupId": {
+                    "example": "any"
+                  },
+                  "attendenceDate": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/attendence/{id}": {
+      "get": {
+        "tags": [
+          "Attendence"
+        ],
+        "description": "This API For Get Attendence By Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/attendence/find-student-attendance": {
+      "patch": {
+        "tags": [
+          "Attendence"
+        ],
+        "description": "This API For Find Student Attendence By Id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentId": {
+                    "example": "any"
+                  },
+                  "groupId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "description": "This API For Get All Transactions With Filteration",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size: ex: ?limit=10",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "example: ?fields=name,description",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "indexing page: ex: ?page=2",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "example: ?sort=name,-createdAt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "attendenceModel": {
         "title": "Attendence",
-        "required": [
-          "studentDeposite"
-        ],
         "properties": {
           "student": {
             "type": "string"
-          },
-          "studentDeposite": {
-            "type": "number"
           },
           "group": {
             "type": "string"

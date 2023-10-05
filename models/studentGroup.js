@@ -18,6 +18,14 @@ const studentGroupSchema = new mongoose.Schema({
     },
 });
 
+studentGroupSchema.pre(/^find/, function (next) {
+    this.populate({
+        path: 'student',
+        select: '-__v'
+    });
+    next();
+});
+
 const StudentGroup = mongoose.model('student-group', studentGroupSchema);
 
 module.exports = StudentGroup;

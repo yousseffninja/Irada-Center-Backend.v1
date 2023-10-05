@@ -5,10 +5,6 @@ const attendenceSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'
     },
-    studentDeposite: {
-        type: Number,
-        required: true
-    },
     group: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Group'
