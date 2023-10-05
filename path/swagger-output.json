@@ -269,6 +269,37 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Teachers"
+        ],
+        "description": "This API For Withdraw Balance",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "teacherId": {
+                    "example": "any"
+                  },
+                  "amount": {
+                    "example": "any"
+                  },
+                  "note": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/teachers/{id}": {
@@ -732,7 +763,6 @@
         "title": "Transaction",
         "required": [
           "studentDeposite",
-          "percentage",
           "transactionType"
         ],
         "properties": {
@@ -756,7 +786,11 @@
             "format": "date-time"
           },
           "transactionType": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "deposite",
+              "withdraw"
+            ]
           },
           "transactionNote": {
             "type": "string"
